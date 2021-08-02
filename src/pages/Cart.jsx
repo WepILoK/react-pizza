@@ -2,12 +2,12 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
-
 import emptyCartImage from "../assets/img/empty-cart.png"
 import {CartItem, Button} from "../components";
-import {clearCart, removeCartItem, plusCartItem, minusCartItem} from "../redux/actions/cart";
+import {clearCart, removeCartItem, plusCartItem, minusCartItem} from "../store/actions/cart";
 
-const Cart = () => {
+
+export const Cart = () => {
     const dispatch = useDispatch();
     const {totalPrice, totalCount, items} = useSelector(({cart}) => cart);
 
@@ -125,4 +125,3 @@ const Cart = () => {
         </div>
     )
 }
-export default Cart;

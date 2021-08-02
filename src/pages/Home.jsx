@@ -3,9 +3,9 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {Categories, PizzaBlock, SortPopup, PizzaLoadingBlock} from "../components";
 
-import {setCategory, setSortBuy} from "../redux/actions/filters";
-import {fetchPizzas} from "../redux/actions/pizzas";
-import {addPizzaToCart} from "../redux/actions/cart";
+import {setCategory, setSortBuy} from "../store/actions/filters";
+import {fetchPizzas} from "../store/actions/pizzas";
+import {addPizzaToCart} from "../store/actions/cart";
 
 
 const categoryName = ["Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые",];
