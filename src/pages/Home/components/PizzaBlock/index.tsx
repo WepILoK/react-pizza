@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import classNames from "classnames";
-import {Button} from "../index";
 import {InItem} from "../../../../store/ducks/cartItems/contracts/state";
+import {Button} from "../../../../components/Button";
 
 
 interface IPizzaBlock {
@@ -15,17 +15,26 @@ interface IPizzaBlock {
     addedCount?: number
 }
 
-export const PizzaBlock: React.FC<IPizzaBlock> = ({id, name, sizes, price, imageUrl, types, onClickAddCart, addedCount}) => {
+export const PizzaBlock: React.FC<IPizzaBlock> = ({
+                                                      id,
+                                                      name,
+                                                      sizes,
+                                                      price,
+                                                      imageUrl,
+                                                      types,
+                                                      onClickAddCart,
+                                                      addedCount
+                                                  }) => {
     const typeNames = ["тонкое", "традиционное"];
     const availableSizes = [26, 30, 40];
 
     const [activeType, setActiveType] = useState(types[0]);
     const [activeSize, setActiveSize] = useState(0);
 
-    const onSelectType = (type) => {
+    const onSelectType = (type: number) => {
         setActiveType(type)
     };
-    const onSelectSize = (size) => {
+    const onSelectSize = (size: number) => {
         setActiveSize(size)
     };
     const onAddPizza = () => {
@@ -34,8 +43,8 @@ export const PizzaBlock: React.FC<IPizzaBlock> = ({id, name, sizes, price, image
             name,
             imageUrl,
             price,
-            size:availableSizes[activeSize],
-            type:typeNames[activeType],
+            size: availableSizes[activeSize],
+            type: typeNames[activeType],
         };
         onClickAddCart(obj)
     };
@@ -51,22 +60,24 @@ export const PizzaBlock: React.FC<IPizzaBlock> = ({id, name, sizes, price, image
                     {typeNames.map((type, index) =>
                         <li className={classNames({
                             active: activeType === index,
-                            disabled: !types.includes(index),
+                            disabled: !types.includes(index)
                         })}
-                            key={`${type}_${index}`} onClick={() => onSelectType(index)}>{type}</li>)}
+                            key={`${type}_${index}`}
+                            onClick={() => onSelectType(index)}>{type}</li>)}
                 </ul>
                 <ul>
                     {availableSizes.map((size, index) =>
                         <li className={classNames({
                             active: activeSize === index,
-                            disabled: !sizes.includes(size),
+                            disabled: !sizes.includes(size)
                         })}
-                            key={`${size}_${index}`} onClick={() => onSelectSize(index)}>{size} см.</li>)}
+                            key={`${size}_${index}`}
+                            onClick={() => onSelectSize(index)}>{size} см.</li>)}
                 </ul>
             </div>
             <div className="pizza-block__bottom">
                 <div className="pizza-block__price">от {price} ₽</div>
-                <Button onClick={onAddPizza}  className="button--add" outline>
+                <Button onClick={onAddPizza} className="button--add" outline>
                     <svg width="12"
                          height="12"
                          viewBox="0 0 12 12"

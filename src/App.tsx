@@ -1,8 +1,9 @@
 import React from 'react';
 import {Route} from "react-router-dom";
 
-import {Header} from "./components";
-import {Home, Cart} from "./pages/index"
+import {Header} from "./components/Header";
+import {Cart} from "./pages/Cart/Cart";
+import {Home} from "./pages/Home";
 
 
 export const App = () => {

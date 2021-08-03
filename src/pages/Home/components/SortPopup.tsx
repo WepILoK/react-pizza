@@ -1,26 +1,27 @@
 import React, {useEffect, useRef, useState} from "react";
 
-interface d {
-    name: string, type: string, order: string
-}
+
 interface ISortPopupProps {
     activeSortType: string
-    items: d[]
     onClickSortType: any
 }
 
-export const SortPopup: React.FC<ISortPopupProps> = React.memo(({items, activeSortType, onClickSortType}) => {
+export const SortPopup: React.FC<ISortPopupProps> = React.memo(({activeSortType, onClickSortType}) => {
+    const items = [
+        {name: "популярности", type: "popular", order: "desc"},
+        {name: "цене", type: "price", order: "desc"},
+        {name: "алфавиту", type: "name", order: "asc"}];
     const [visiblePopup, setVisiblePopup] = useState(false);
     const sortRef = useRef<HTMLDivElement>(null);
-    const activeName = items.find(obj => obj.type === activeSortType).name;
+    const activeName = items.find(obj => obj.type === activeSortType)
     const toggleVisiblePopup = () => {
         setVisiblePopup(!visiblePopup);
     };
-    const onSelectItem = (index) => {
-        onClickSortType(index);
+    const onSelectItem = (sort: { name: string, type: string, order: string }) => {
+        onClickSortType(sort);
         setVisiblePopup(false);
     };
-    const handleOutsideClick = (event) => {
+    const handleOutsideClick = (event: any) => {
         const path = event.path || (event.composedPath && event.composedPath());
         if (!path.includes(sortRef.current)) {
             setVisiblePopup(false);
@@ -45,7 +46,7 @@ export const SortPopup: React.FC<ISortPopupProps> = React.memo(({items, activeSo
                         fill="#2C2C2C"/>
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={toggleVisiblePopup}>{activeName}</span>
+                <span onClick={toggleVisiblePopup}>{activeName?.name}</span>
             </div>
             {visiblePopup &&
             <div className="sort__popup">

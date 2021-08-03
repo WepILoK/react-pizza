@@ -1,10 +1,8 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
-
 import {fetchPizzas, setCategory, setSortBuy} from "../../store/ducks/pizzas/actionCreators";
 import {LoadingBlock as PizzaLoadingBlock} from './components/PizzaBlock/LoadingBlock'
-
 import {
     selectPizzasCategory,
     selectPizzasIsLoaded,
@@ -16,18 +14,10 @@ import {selectCartItems} from "../../store/ducks/cartItems/selectors";
 import {SortPopup} from "./components/SortPopup";
 import {addPizzaToCart} from "../../store/ducks/cartItems/actionCreators";
 import {Categories} from "./components/Categories";
-
-
+import {PizzaBlock} from "./components/PizzaBlock";
 
 
 export const Home = () => {
-    const categoryName = ["Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые",];
-    const sortItems = [
-        {name: "популярности", type: "popular", order: "desc"},
-        {name: "цене", type: "price", order: "desc"},
-        {name: "алфавиту", type: "name", order: "asc"}];
-
-
     const PizzaItems = useSelector(selectPizzasItems);
     const cartItems = useSelector(selectCartItems);
     const isLoaded = useSelector(selectPizzasIsLoaded);
@@ -41,7 +31,7 @@ export const Home = () => {
     }, [category, sortBy]);
 
     const onSelectCategory = React.useCallback(index => dispatch(setCategory(index)), []);
-    const onSelectSortType = React.useCallback(type => dispatch(setSortBuy(type)), []);
+    const onSelectSortType = React.useCallback(sort => dispatch(setSortBuy(sort)), []);
 
     const handleAddPizzaToCart = (obj: InItem) => {
       dispatch(addPizzaToCart(obj))
@@ -52,10 +42,9 @@ export const Home = () => {
             <div className="content__top">
                 <Categories activeCategory={category}
                             onClickCategory={onSelectCategory}
-                            items={categoryName}/>
+                            items={["Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые",]}/>
                 <SortPopup activeSortType={sortBy.type}
-                           onClickSortType={onSelectSortType}
-                           items={sortItems}/>
+                           onClickSortType={onSelectSortType}/>
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">

@@ -2,8 +2,8 @@ import React from "react";
 import classNames from "classnames";
 
 interface IButtonProps {
-    onClick: () => void
-    outline: boolean
+    onClick?: () => void
+    outline?: boolean
     className: string
 }
 

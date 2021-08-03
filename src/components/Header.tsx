@@ -2,11 +2,13 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 
-import {Button} from "../components/index";
 import logo from "../assets/img/pizza-logo.svg";
+import {selectCartState} from "../store/ducks/cartItems/selectors";
+import {Button} from "./Button";
+
 
 export const Header = () => {
-    const {totalPrice, totalCount} = useSelector(({cart}) => cart)
+    const {totalPrice, totalCount} = useSelector(selectCartState)
     return (
         <div className="header">
             <div className="container">
