@@ -1,7 +1,14 @@
-import {IData, InItem, LoadingStatus} from "../../listItems/contracts/state";
+export interface InItem {
+    id: number
+    name: string
+    imageUrl: string
+    price: number
+    size: number
+    type: string
+}
 
-export interface IState {
-    items: {},
+export interface ICartState {
+    items: any,
     totalPrice: number,
     totalCount: number,
 }

@@ -5,3 +5,13 @@ export const selectPizzasState = (state: RootState): IPizzasState => state.pizza
 
 export const selectPizzasItems = (state: RootState): IPizzasState['items'] =>
     selectPizzasState(state).items
+
+export const selectPizzasIsLoaded = (state: RootState): IPizzasState['isLoaded'] =>
+    selectPizzasState(state).isLoaded
+
+export const selectPizzasSortBy = (state: RootState): IPizzasState['sortBy']=>
+    selectPizzasState(state).sortBy
+
+export const selectPizzasCategory = (state: RootState): IPizzasState['category']=>
+    selectPizzasState(state).category
+

@@ -10,11 +10,22 @@ export interface IPizza {
 }
 
 export enum EnumSortByType {
-    POPULAR = "popular"
+    POPULAR = "popular",
+    PRICE = "price",
+    NAME = "name"
 }
 
 export enum EnumSortByOrder {
-    DESC = "desc"
+    DESC = "desc",
+    ASC = "asc"
+}
+
+export enum EnumCategory {
+    MEAT = "Мясные",
+    VEGETARIAN = "Вегетарианская",
+    GRILL = "Гриль",
+    SPICY = "Острые",
+    CLOSED = "Закрытые",
 }
 
 export interface ISortBy {
@@ -25,7 +36,7 @@ export interface ISortBy {
 export interface IPizzasState {
     items: IPizza[]
     isLoaded: boolean
-    category: null
+    category: EnumCategory | null
     sortBy: ISortBy
 
 }

@@ -2,9 +2,8 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
-import emptyCartImage from "../assets/img/empty-cart.png"
-import {CartItem, Button} from "../components";
-import {clearCart, removeCartItem, plusCartItem, minusCartItem} from "../store/actions/cart";
+import emptyCartImage from "../../assets/img/empty-cart.png"
+import {clearCart, minusCartItem, plusCartItem, removeCartItem} from "../../store/ducks/cartItems/actionCreators";
 
 
 export const Cart = () => {

@@ -1,8 +1,8 @@
 import React from "react";
-import {Button} from "./index";
+import {Button} from "./Button";
 
 
-const CartItem = ({id, name, size, type, imageUrl, totalPrice, totalCount, onRemoveItem, onPlus, onMinus}) => {
+export const CartItem = ({id, name, size, type, imageUrl, totalPrice, totalCount, onRemoveItem, onPlus, onMinus}) => {
     const handleRemoveClick = () => {
         onRemoveItem(id)
     };
@@ -58,6 +58,4 @@ const CartItem = ({id, name, size, type, imageUrl, totalPrice, totalCount, onRem
             </div>
         </div>
     )
-};
-
-export default CartItem;
+}

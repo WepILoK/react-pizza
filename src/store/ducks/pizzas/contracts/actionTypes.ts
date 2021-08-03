@@ -28,7 +28,7 @@ export interface ISetSortBuy extends Action<ActionsType> {
 //TODO: указать тип
 export interface ISetCategory extends Action<ActionsType> {
     type: ActionsType.SET_CATEGORY
-    payload: any
+    payload: IPizzasState['category']
 }
 
 export interface IFetchPizzas extends Action<ActionsType> {

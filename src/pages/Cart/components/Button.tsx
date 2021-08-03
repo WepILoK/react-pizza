@@ -1,7 +1,13 @@
 import React from "react";
 import classNames from "classnames";
 
-const Button = ({onClick, outline, children, className}) => {
+interface IButtonProps {
+    onClick: () => void
+    outline: boolean
+    className: string
+}
+
+export const Button: React.FC<IButtonProps> = ({onClick, outline, children, className}) => {
     return (
         <button
             onClick={onClick}
@@ -12,5 +18,3 @@ const Button = ({onClick, outline, children, className}) => {
         </button>
     )
 };
-
-export default Button;

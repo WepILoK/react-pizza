@@ -1,14 +1,15 @@
 import {ActionsType, IFetchPizzas, ISetCategory, ISetLoaded, ISetPizzas, ISetSortBuy} from "./contracts/actionTypes";
 import {IPizzasState} from "./contracts/state";
+import {IRequestPizzas} from "../../../api/pizzas-api";
 
-export const setSortBuy = ({type, order}: IPizzasState['sortBy']): ISetSortBuy => ({
+export const setSortBuy = (payload: IPizzasState['sortBy']): ISetSortBuy => ({
     type: ActionsType.SET_SORT_BUY,
-    payload: {type, order},
+    payload
 });
 
-export const setCategory = (index: any): ISetCategory => ({
+export const setCategory = (payload: IPizzasState['category']): ISetCategory => ({
     type: ActionsType.SET_CATEGORY,
-    payload: index,
+    payload
 });
 
 export const setLoaded = (payload: boolean): ISetLoaded => ({
@@ -16,11 +17,12 @@ export const setLoaded = (payload: boolean): ISetLoaded => ({
     payload
 });
 
-export const fetchPizzas = (): IFetchPizzas => ({
-    type: ActionsType.FETCH_PIZZAS
+export const fetchPizzas = (payload: IRequestPizzas): IFetchPizzas => ({
+    type: ActionsType.FETCH_PIZZAS,
+    payload
 })
 
-export const setPizzas = (items: IPizzasState['items']): ISetPizzas => ({
+export const setPizzas = (payload: IPizzasState['items']): ISetPizzas => ({
     type: ActionsType.SET_PIZZAS,
-    payload: items,
+    payload
 });

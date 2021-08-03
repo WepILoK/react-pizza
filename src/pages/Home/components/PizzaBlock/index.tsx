@@ -1,10 +1,21 @@
 import React, {useState} from "react";
 import classNames from "classnames";
-import PropTypes from "prop-types";
 import {Button} from "../index";
+import {InItem} from "../../../../store/ducks/cartItems/contracts/state";
 
 
-const PizzaBlock = ({id, name, sizes, price, imageUrl, types, onClickAddCart, addedCount}) => {
+interface IPizzaBlock {
+    id: number
+    name: string
+    imageUrl: string
+    price: number
+    types: number[]
+    sizes: number[]
+    onClickAddCart: (obj: InItem) => void
+    addedCount?: number
+}
+
+export const PizzaBlock: React.FC<IPizzaBlock> = ({id, name, sizes, price, imageUrl, types, onClickAddCart, addedCount}) => {
     const typeNames = ["тонкое", "традиционное"];
     const availableSizes = [26, 30, 40];
 
@@ -14,8 +25,8 @@ const PizzaBlock = ({id, name, sizes, price, imageUrl, types, onClickAddCart, ad
     const onSelectType = (type) => {
         setActiveType(type)
     };
-    const onSelectSize = (type) => {
-        setActiveSize(type)
+    const onSelectSize = (size) => {
+        setActiveSize(size)
     };
     const onAddPizza = () => {
         const obj = {
@@ -73,20 +84,4 @@ const PizzaBlock = ({id, name, sizes, price, imageUrl, types, onClickAddCart, ad
     )
 };
 
-PizzaBlock.propTypes = {
-    name: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    types: PropTypes.arrayOf(PropTypes.number).isRequired,
-    sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
-    onAddCart: PropTypes.func,
-    addedCount: PropTypes.number
-};
-PizzaBlock.defaultProps = {
-    name:"---",
-    price: 0,
-    types: [],
-    sizes: [],
-};
 
-export default PizzaBlock;

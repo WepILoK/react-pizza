@@ -5,7 +5,7 @@ import {useSelector} from "react-redux";
 import {Button} from "../components/index";
 import logo from "../assets/img/pizza-logo.svg";
 
-const Header = () => {
+export const Header = () => {
     const {totalPrice, totalCount} = useSelector(({cart}) => cart)
     return (
         <div className="header">
@@ -23,7 +23,7 @@ const Header = () => {
                     <Link to={"/cart"}>
                         <Button className="button--cart">
                             <span>{totalPrice} ₽</span>
-                            <div className="button__delimiter"></div>
+                            <div className="button__delimiter"/>
                             <svg
                                 width="18"
                                 height="18"
@@ -58,8 +58,5 @@ const Header = () => {
                 </div>
             </div>
         </div>
-
     )
 }
-
-export default Header;

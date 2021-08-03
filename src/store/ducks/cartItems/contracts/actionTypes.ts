@@ -1,4 +1,5 @@
 import {Action} from "redux";
+import {InItem} from "./state";
 
 
 export enum ActionsType {
@@ -11,7 +12,7 @@ export enum ActionsType {
 
 export interface IAddPizzaToCart extends Action<ActionsType> {
     type: ActionsType.ADD_PIZZA_CART
-    payload: pizzaOdj
+    payload: InItem
 }
 
 export interface IClearCart extends Action<ActionsType> {
